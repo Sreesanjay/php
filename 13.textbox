@@ -1,0 +1,18 @@
+<html>
+<body>
+    <label>Enter text</label> :
+    <input type="text" id="txtbox" onfocus=change(0) onblur=change(1)>
+    <script>
+        function change(i) {
+            if (i == 0) {
+                document.getElementById("txtbox").style.backgroundColor = "green";
+                document.getElementById("txtbox").style.color = "blue";
+            }
+            else {
+                document.getElementById("txtbox").style.backgroundColor = "red";
+                document.getElementById("txtbox").style.color = "black";
+            }
+        }
+    </script>
+</body>
+</html>
