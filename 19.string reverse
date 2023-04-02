@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <form method="post">
+        <label for="">Enter the string to reverse</label>
+        <input type="text" name="string">
+        <br>
+        <input type="submit" value="submit">
+    </form>
+</body>
+</html>
+<?php  
+ if($_POST)  
+ {   
+  //get the string entered  
+  $string = $_POST['string'];
+  
+  function revString($str)
+  {
+    $length = strlen($str);  
+    for ($i=($length-1) ; $i >= 0 ; $i--)   
+       {  
+         echo $str[$i];  
+       }  
+  }
+  revString($string);
+ }
+
+  ?>
