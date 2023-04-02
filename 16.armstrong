@@ -14,12 +14,13 @@
   $number = $_POST['number'];  
   //store entered number in a variable  
   $a = $number;  
+  $numlength = strlen((string)$number);
   $sum  = 0;  
   //run loop till the quotient is 0  
   while( $a != 0 )  
   {  
    $rem   = $a % 10; //find reminder  
-   $sum   = $sum + ( $rem * $rem * $rem ); //cube the reminder and add it to the sum variable till the loop ends  
+   $sum += pow($rem, $numlength);  
    $a   = $a / 10; //find quotient. if 0 then loop again  
   }  
   //if the entered number and $sum value matches then it is an armstrong number  
