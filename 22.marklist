@@ -39,7 +39,7 @@ mysqli_close($conn);
 <html>
     <form action="" method="post">
         <center>
-        <h3>Enter the roo number to display mark list</h3>
+        <h3>Enter the roll number to display mark list</h3>
         Roll No:<input type="number" name="roll_no"> <br><br>
         <input type="submit" value="Submit">
         </center>
