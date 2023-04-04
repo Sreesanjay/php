@@ -1,0 +1,48 @@
+<?php
+$servername = "localhost";
+$user ='root';
+$pass="";
+$db='stdb';
+$conn = mysqli_connect($servername, $user, $pass, $db);
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+if($_POST){
+    $r_no = $_POST['roll_no'];
+
+$sql = "SELECT * FROM student WHERE roll_no ='$r_no'" ;
+
+$result = mysqli_query($conn, $sql);
+$numrows=mysqli_num_rows($result);
+if ($numrows > 0) {
+    while($row = mysqli_fetch_assoc($result)) {
+        
+        echo "<br> \n";
+        echo "<center> <h2> Mark list of: " . $row["name"]."</h2><br>"; 
+        echo "<center> Roll Number: " . $row["roll_no"]."<br>"; 
+        echo "<center> Name: " . $row["name"]."<br>"; 
+        echo "<center> Mark: " . $row["mark"]."<br>"; 
+        echo "<center> Grade: " . $row["grade"]."<br>"; 
+        
+        "</center>";
+       
+      }
+} else {
+    echo '<center>User does not exist in the table.</center>';
+}
+}
+
+mysqli_close($conn);
+?>
+
+<html>
+    <form action="" method="post">
+        <center>
+        <h3>Enter the roo number to display mark list</h3>
+        Roll No:<input type="number" name="roll_no"> <br><br>
+        <input type="submit" value="Submit">
+        </center>
+    </form>
+</html>
+
