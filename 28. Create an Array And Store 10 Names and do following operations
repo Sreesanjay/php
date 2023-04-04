@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Enter 10 Names</title>
+</head>
+<body>
+	<h2>Enter 10 Names</h2>
+	<form method="post">
+		<?php
+			for($i=1;$i<=10;$i++){
+				echo "<label for='name{$i}'>Name {$i}:</label>";
+				echo "<input type='text' name='names[]' id='name{$i}'><br>";
+			}
+		?>
+		<label for='search'>Enter the name to search</label>
+		<input type='text' name='search' id='search'>
+		<input type="submit" name="submit" value="Submit Names">
+	</form>
+	<?php
+		if($_POST){
+			$names = $_POST['names'];
+			$search_element = $_POST['search'];
+			echo "<h2>The Names are:</h2>";
+			echo "<ul>";
+			foreach($names as $name){
+				echo "<li>{$name}</li>";
+
+			
+			}
+			echo "</ul>";
+
+			sort($names);
+			echo "<h2>The Names in Sorted Order are:</h2>";
+			echo "<ul>";
+			foreach($names as $name){
+				echo "<li>{$name}</li>";
+			}
+			echo "</ul>";
+
+			sort($names);
+			echo "<h2>Names Without Duplicates</h2>";
+			echo "<ul>";
+			foreach(array_unique($names) as $name){
+				echo "<li>{$name}</li>";
+			}
+			echo "</ul>";
+
+			$last_name = array_pop($names);
+			echo "<h2>Removed Last Element:</h2>";
+			echo "<ul>";
+			foreach($names as $name){
+				echo "<li>{$name}</li>";
+			}
+			echo "</ul>";
+
+			echo "<h2>The Names in Reverse Order are:</h2>";
+			echo "<ul>";
+			foreach(array_reverse($names) as $name){
+				echo "<li>{$name}</li>";
+			}
+			echo "</ul>";
+
+            sleep(5);
+			$key = array_search($search_element , $names);
+			if ($key !== false) {
+				echo "Found $search_element at position: " . $key;
+			} else {
+				echo "Could not find $search_element in the array.";
+			}
+
+		}
+	?>
+</body>
+</html>
